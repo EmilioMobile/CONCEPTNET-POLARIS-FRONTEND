@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  dialogflow: {
+    angularBot: '29fa165f67bc46b5af7c8fde428aa867'
+  }
 };
 
 /*

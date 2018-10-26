@@ -4,7 +4,7 @@
       <ng-container>
         <div class='block'>
           <div class='chatbot-avatar'>
-            <img src="/assets/angular_solidBlack.svg">
+            <img src="./assets/angular_solidBlack.svg">
           </div>
           <div class='message' [ngClass]="{ 'from': true }">I'm POLARIS X, you can ask me about things and so on ...</div>
         </div>
@@ -13,7 +13,7 @@
         <div class='block' [ngClass]="{ 'from': message.sentBy === 'bot',
                                           'to': message.sentBy === 'user' }">
           <div class='chatbot-avatar' [hidden]="message.sentBy !== 'bot'">
-              <img src="/assets/angular_solidBlack.svg">
+              <img src="./assets/angular_solidBlack.svg">
           </div>
           <div class='message' [ngClass]="{ 'from': message.sentBy === 'bot',
                                             'to': message.sentBy === 'user' }">

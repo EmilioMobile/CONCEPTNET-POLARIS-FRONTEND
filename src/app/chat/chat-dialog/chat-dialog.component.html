@@ -1,14 +1,30 @@
-<h1> POLARIS BOT </h1>
-
-<ng-container *ngFor='let message of messages | async'>
-  <div class='message' [ngClass]="{ 'from': message.sentBy === 'bot',
-                                    'to': message.sentBy === 'user' }">
-    {{message.content}}
+<section class='chatbot'>
+  <div id='container'>
+    <div id='messages-container'>
+      <ng-container>
+        <div class='block'>
+          <div class='chatbot-avatar'>
+            <img src="/assets/angular_solidBlack.svg">
+          </div>
+          <div class='message' [ngClass]="{ 'from': true }">I'm POLARIS X, you can ask me about things and so on ...</div>
+        </div>
+      </ng-container>
+      <ng-container *ngFor='let message of messages | async'>
+        <div class='block' [ngClass]="{ 'from': message.sentBy === 'bot',
+                                          'to': message.sentBy === 'user' }">
+          <div class='chatbot-avatar' [hidden]="message.sentBy !== 'bot'">
+              <img src="/assets/angular_solidBlack.svg">
+          </div>
+          <div class='message' [ngClass]="{ 'from': message.sentBy === 'bot',
+                                            'to': message.sentBy === 'user' }">
+            {{message.content}}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div id='input-container'>
+      <input class='inputBox' [(ngModel)]='formValue' (keyup.enter)='sendMessage()' type='text' placeholder="Type something ...">
+      <button (click)='sendMessage()'>Send</button>
+    </div>
   </div>
-</ng-container>
-
-<label for='nameField'>Your Message</label>
-
-<input [(ngModel)]='formValue' (keyup.enter)='sendMessage()' type='text'><br>
-
-<button (click)='sendMessage()'>Send</button>
+</section>

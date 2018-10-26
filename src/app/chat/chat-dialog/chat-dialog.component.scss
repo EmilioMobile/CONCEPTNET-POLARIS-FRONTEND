@@ -1,0 +1,96 @@
+.block {
+  width: 100%;
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.block.to {
+  justify-content: flex-end;
+}
+
+.block.from {
+  justify-content: flex-start;
+}
+
+.message {
+  border-radius: 5px;
+  margin: 0 0px 10px;
+  padding: 10px 10px;
+  position: relative;
+  font-weight: bold;
+  font-size: 14px;
+  max-width: 80%;
+}
+
+.message.to {
+  background-color: blueviolet;
+  color: #fff;
+}
+.message.from {
+  background-color: #E5E4E9;
+  color: #363636;
+}
+.message.to + .message.to,
+.message.from + .message.from {
+  margin-top: -10px;
+}
+
+
+.chatbot #container {
+  width: 100%;
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  position: relative;
+  padding: 15px;
+  margin: 25px;
+  max-width: 500px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+}
+
+.chatbot #messages-container {
+  width: 100%;
+  min-height: 300px;
+  max-height: 300px;
+  margin: auto;
+  padding: 15px;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.chatbot #input-container {
+  width: 100%;
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin-top: 15px;
+}
+
+.chatbot-avatar img {
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.inputBox {
+  color: gray;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+

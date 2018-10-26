@@ -1,0 +1,15 @@
+.red {
+  //background-color: red;
+}
+
+.blue {
+  //background-color: blue;
+}
+
+@media (min-width: 40rem) {
+.row {
+    flex-direction: row !important;
+    margin-left: -1.0rem !important;
+    width: calc(100%) !important;
+}
+}

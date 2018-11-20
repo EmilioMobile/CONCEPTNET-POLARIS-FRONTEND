@@ -22,7 +22,6 @@ export class ChatService {
 
   // Adds message to source
   update(msg: Message) {
-
     if (msg.sentBy === 'bot' && msg.source === 'CONCEPTNET') {
       const re = msg.content.split('"');
       let answer = '';

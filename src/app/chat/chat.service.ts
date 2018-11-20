@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class Message {
-  constructor(public content: string, public sentBy: string) {}
+  constructor(public source: string, public content: string, public sentBy: string) {}
 }
 
 @Injectable({
@@ -22,17 +22,45 @@ export class ChatService {
 
   // Adds message to source
   update(msg: Message) {
+
+    if (msg.sentBy === 'bot' && msg.source === 'CONCEPTNET') {
+      const re = msg.content.split('"');
+      let answer = '';
+      for (let i = 0; i < re.length; i++) {
+        if (re[i] === 'surfaceText') {
+        console.log(re[i + 2]);
+        }
+      }
+
+      for (let i = 0; i < re.length; i++) {
+        if (re[i] === 'surfaceText') {
+        console.log(re[i + 2]);
+        answer = re[i + 2];
+        break;
+        }
+      }
+      msg.content = answer;
+    }
+
+    console.log(msg);
     this.conversation.next([msg]);
   }
 
   converse(msg: string) {
-    const userMessage = new Message(msg, 'user');
+
+    const userMessage = new Message('PolarisX', msg, 'user');
     this.update(userMessage);
 
     return this.client.textRequest(msg)
           .then(res => {
+            console.log(res);
+            const kk = res.result.fulfillment;
             const speech = res.result.fulfillment.speech;
-            const botMessage = new Message(speech, 'bot');
+            let sourcea = '';
+            if (kk['source']) {
+              sourcea = kk['source'];
+            }
+            const botMessage = new Message(sourcea, speech, 'bot');
             this.update(botMessage);
           });
   }

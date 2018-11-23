@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, DoCheck, OnDestroy, AfterContentChecked, 
-          AfterViewChecked } from '@angular/core';
+          AfterViewChecked, ViewEncapsulation } from '@angular/core';
 import { ChatService, Message } from '../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
@@ -7,7 +7,8 @@ import 'rxjs/add/operator/scan';
 @Component({
   selector: 'app-chat-dialog',
   templateUrl: './chat-dialog.component.html',
-  styleUrls: ['./chat-dialog.component.scss']
+  styleUrls: ['./chat-dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ChatDialogComponent implements OnInit, AfterViewInit, AfterContentInit,
                                       OnChanges, DoCheck, OnDestroy, AfterContentChecked, AfterViewChecked {
@@ -16,13 +17,14 @@ export class ChatDialogComponent implements OnInit, AfterViewInit, AfterContentI
   formValue = '';
   container: HTMLElement;
   DEBUG = false;
+  WelcomeMessage = 'Hello, I am PolarisX, you can ask me about things ...';
 
-  constructor(public chat: ChatService) { }
+  constructor(public chat: ChatService) {}
 
   ngOnInit() {
     this.debug('ngOnInit');
     this.messages = this.chat.conversation.asObservable()
-      .scan((acc, val) => acc.concat(val));
+      .scan((messages, text) => messages.concat(text));
   }
 
   ngAfterViewInit() {
@@ -34,7 +36,7 @@ export class ChatDialogComponent implements OnInit, AfterViewInit, AfterContentI
   }
 
   ngAfterContentChecked() {
-    console.log('ngAfterContentChecked');
+    this.debug('ngAfterContentChecked');
   }
 
   ngAfterViewChecked() {
@@ -69,6 +71,16 @@ export class ChatDialogComponent implements OnInit, AfterViewInit, AfterContentI
   debug(message) {
     if (this.DEBUG === true) {
       console.log(message);
+    }
+  }
+
+  public highlight(message) {
+    if (message.sentBy === 'bot') {
+      return message.content.replace(new RegExp(/\[\[.*?\]\]/, 'gi'), match => {
+          return '<span class="highlightText">' + match + '</span>';
+      });
+    } else {
+      return message.content;
     }
   }
 }

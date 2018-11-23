@@ -23,25 +23,8 @@ export class ChatService {
   // Adds message to source
   update(msg: Message) {
     if (msg.sentBy === 'bot' && msg.source === 'CONCEPTNET') {
-      const re = msg.content.split('"');
-      let answer = '';
-      for (let i = 0; i < re.length; i++) {
-        if (re[i] === 'surfaceText') {
-        console.log(re[i + 2]);
-        }
-      }
-
-      for (let i = 0; i < re.length; i++) {
-        if (re[i] === 'surfaceText') {
-        console.log(re[i + 2]);
-        answer = re[i + 2];
-        break;
-        }
-      }
-      msg.content = answer;
+      console.log('CONCEPTNET: ', msg.content);
     }
-
-    console.log(msg);
     this.conversation.next([msg]);
   }
 
@@ -53,13 +36,13 @@ export class ChatService {
     return this.client.textRequest(msg)
           .then(res => {
             console.log(res);
-            const kk = res.result.fulfillment;
+            const fullfilment = res.result.fulfillment;
             const speech = res.result.fulfillment.speech;
-            let sourcea = '';
-            if (kk['source']) {
-              sourcea = kk['source'];
+            let source = '';
+            if (fullfilment['source']) {
+              source = fullfilment['source'];
             }
-            const botMessage = new Message(sourcea, speech, 'bot');
+            const botMessage = new Message(source, speech, 'bot');
             this.update(botMessage);
           });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, DoCheck, OnDestroy, AfterContentChecked, 
+import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, DoCheck, OnDestroy, AfterContentChecked,
           AfterViewChecked, ViewEncapsulation } from '@angular/core';
 import { ChatService, Message } from '../chat.service';
 import { Observable } from 'rxjs/Observable';

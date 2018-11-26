@@ -17,7 +17,7 @@ export class ChatDialogComponent implements OnInit, AfterViewInit, AfterContentI
   formValue = '';
   container: HTMLElement;
   DEBUG = false;
-  WelcomeMessage = 'Hello, I am PolarisX, you can ask me about things ...';
+  WelcomeMessage = 'Hello, I am PolarisX, I understand concepts ...';
 
   constructor(public chat: ChatService) {}
 

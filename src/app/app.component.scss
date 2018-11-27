@@ -1,15 +1,43 @@
 .red {
-  //background-color: red;
+  background-color: whitesmoke;
 }
 
 .blue {
-  //background-color: blue;
+  background-color: gray;
+  color: white;
+  p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 0px !important;
+  }
+  p:first-child{
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    padding: 0px !important;
+  }
+
+  p:last-child{
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    padding: 0px !important;
+  }
 }
 
-@media (min-width: 40rem) {
+
+
 .row {
+  display: flex;
+  flex-direction: row !important;
+  width: calc(100%) !important;
+  margin: 0px;
+  margin-top: 10px !important;
+}
+
+/*
+@media (min-width: 40rem) {
+  .row {
+    display: flex;
     flex-direction: row !important;
-    margin-left: -1.0rem !important;
     width: calc(100%) !important;
-}
-}
+  }
+}*/

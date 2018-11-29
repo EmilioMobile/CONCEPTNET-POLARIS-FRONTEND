@@ -13,23 +13,22 @@
   <!-- Milligram CSS minified -->
   <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-   <!-- Global site tag (gtag.js) - Google Analytics -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129142334-1"></script>
-   <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-
-     gtag('config', 'UA-129142334-1');
-   </script>
 </head>
 <body>
-    <div id='header' class="header" role="header">
-        <div id="logo" href="/">
-          <img src="./assets/angular_solidBlack.svg" class="loading">
-          <span class='title'>PolarisX</span>
-        </div>
-    </div>
-    <app-root></app-root>
+  <div id='header' class="header" role="header">
+      <div id="logo" href="/">
+        <img src="./assets/angular_solidBlack.svg" class="loading">
+        <span class='title'>PolarisX</span>
+      </div>
+  </div>
+  <app-root></app-root>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129142334-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){console.log('tag'); dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-129142334-1');
+  </script>
 </body>
 </html>
